@@ -50,7 +50,6 @@ func main() {
 			panic(err)
 		}
 
-		fmt.Printf("File to find = \"%v\", found = \"%v\"\n", fileToFind, found)
 		result = append(result, found...)
 	}
 

@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"regexp"
@@ -22,7 +21,6 @@ func FindByInDir(dir string, by string) ([]os.FileInfo, error) {
 			return nil, err
 		}
 		if match {
-			fmt.Printf("Found match! %v in %v\n", by, file.Name())
 			result = append(result, file)
 		}
 	}
@@ -31,8 +29,6 @@ func FindByInDir(dir string, by string) ([]os.FileInfo, error) {
 }
 
 func FindAllByPath(path string, root string) ([]string, error) {
-	fmt.Printf("FindAllByPath called with path = \"%v\" and root = \"%v\"\n", path, root)
-
 	var result []string
 
 	// path = mnt/sda1/Desktop/(?)*\.py
@@ -63,8 +59,6 @@ func FindAllByPath(path string, root string) ([]string, error) {
 			result = append(result, root+foundFile.Name())
 		}
 	}
-
-	fmt.Printf("FindAllByPath returning \"%v\"\n", result)
 
 	return result, nil
 }
