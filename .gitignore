@@ -1,8 +1,13 @@
+# ide
 /.idea
 /.vscode
 /.vs
 /.atom
 
+# build
 fur
 main
 build
+
+# tests
+/test

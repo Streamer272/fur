@@ -43,6 +43,10 @@ func main() {
 			}
 
 			root = root + "/"
+
+			if strings.HasPrefix(fileToFind, "./") {
+				fileToFind = fileToFind[2:]
+			}
 		}
 
 		found, err := parser.FindAllByPath(fileToFind, root)
