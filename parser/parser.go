@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func FindByInDir(dir string, by string) ([]os.FileInfo, error) {
+func FindByInDir(dir string, by string, isDirectory bool) ([]os.FileInfo, error) {
 	var result []os.FileInfo
 
 	content, err := ioutil.ReadDir(dir)
@@ -20,7 +20,7 @@ func FindByInDir(dir string, by string) ([]os.FileInfo, error) {
 		if err != nil {
 			return nil, err
 		}
-		if match {
+		if match && isDirectory == file.IsDir() {
 			result = append(result, file)
 		}
 	}
@@ -35,7 +35,7 @@ func FindAllByPath(path string, root string) ([]string, error) {
 	// root = /
 	// root always ends with "/"
 
-	foundFiles, err := FindByInDir(root, strings.Split(path, "/")[0])
+	foundFiles, err := FindByInDir(root, strings.Split(path, "/")[0], strings.Count(path, "/") > 0)
 	if err != nil {
 		return nil, err
 	}
